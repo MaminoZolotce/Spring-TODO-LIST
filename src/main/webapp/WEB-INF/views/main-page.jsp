@@ -52,6 +52,7 @@
                     <div class="task-item">
                         <form action="/make-record-done" method="post">
                             <input type="hidden" name="id" value="${record.id}">
+                            <input type="hidden" name="status" value="${record.status}">
                             <button type="submit" class="check-btn ${record.status == 'DONE' ? 'checked' : ''}">
                                 <svg class="check-icon" viewBox="0 0 13 10">
                                     <path d="M1 5l4 4L12 1"/>

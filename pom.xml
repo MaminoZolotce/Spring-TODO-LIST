@@ -15,65 +15,74 @@
       <postgreslq.version>42.7.10</postgreslq.version>
       <hibernate.version>7.3.1.Final</hibernate.version>
       <jakarta.persistence.version>3.2.0</jakarta.persistence.version>
+      <dbcp2.version>2.14.0</dbcp2.version>
   </properties>
 
   <dependencies>
-    <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-webmvc</artifactId>
-        <version>${spring.version}</version>
-        <scope>compile</scope>
-    </dependency>
+      <!-- Spring -->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-webmvc</artifactId>
+          <version>${spring.version}</version>
+          <scope>compile</scope>
+      </dependency>
 
-    <dependency>
-        <groupId>jakarta.servlet</groupId>
-        <artifactId>jakarta.servlet-api</artifactId>
-        <version>${servlet.version}</version>
-        <scope>provided</scope>
-    </dependency>
+      <dependency>
+          <groupId>jakarta.servlet</groupId>
+          <artifactId>jakarta.servlet-api</artifactId>
+          <version>${servlet.version}</version>
+          <scope>provided</scope>
+      </dependency>
 
-    <dependency>
-        <groupId>jakarta.servlet.jsp.jstl</groupId>
-        <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-        <version>${jsp.version}</version>
-        <scope>compile</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.glassfish.web</groupId>
-        <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-        <version>${glassfish.version}</version>
-        <scope>runtime</scope>
+      <dependency>
+          <groupId>jakarta.servlet.jsp.jstl</groupId>
+          <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+          <version>${jsp.version}</version>
+          <scope>compile</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.glassfish.web</groupId>
+          <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+          <version>${glassfish.version}</version>
+          <scope>runtime</scope>
 
-    </dependency>
-    <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${spring.version}</version>
-            <scope>compile</scope>
-        </dependency>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-orm</artifactId>
+          <version>${spring.version}</version>
+          <scope>compile</scope>
+      </dependency>
 
 
-        <!-- DB -->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>${postgreslq.version}</version>
-            <scope>compile</scope>
-        </dependency>
+      <!-- DB -->
+      <dependency>
+          <groupId>org.postgresql</groupId>
+          <artifactId>postgresql</artifactId>
+          <version>${postgreslq.version}</version>
+          <scope>compile</scope>
+      </dependency>
 
-        <dependency>
-            <groupId>org.hibernate.orm</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
-            <scope>compile</scope>
-        </dependency>
+      <dependency>
+          <groupId>org.hibernate.orm</groupId>
+          <artifactId>hibernate-core</artifactId>
+          <version>${hibernate.version}</version>
+          <scope>compile</scope>
+      </dependency>
 
-        <dependency>
-            <groupId>jakarta.persistence</groupId>
-            <artifactId>jakarta.persistence-api</artifactId>
-            <version>${jakarta.persistence.version}</version>
-            <scope>compile</scope>
-        </dependency>
+      <dependency>
+          <groupId>jakarta.persistence</groupId>
+          <artifactId>jakarta.persistence-api</artifactId>
+          <version>${jakarta.persistence.version}</version>
+          <scope>compile</scope>
+      </dependency>
+
+      <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-dbcp2</artifactId>
+          <version>${dbcp2.version}</version>
+          <scope>compile</scope>
+      </dependency>
   </dependencies>
   <build>
     <finalName>to-do-list-app</finalName>

@@ -1,6 +1,7 @@
 package com.maminozolotce.controllers;
 
 import com.maminozolotce.entity.DTO.RecordContainerDto;
+import com.maminozolotce.entity.RecordStatus;
 import com.maminozolotce.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -59,8 +60,9 @@ public class CommonController {
 
     @RequestMapping(value = "/make-record-done", method = RequestMethod.POST)
     public String makeRecordDone(@RequestParam("id") int id,
-                                 @RequestParam(name="filter", required = false)String filterMode){
-        recordService.makeRecordDone(id);
+                                 @RequestParam(name="filter", required = false) String filterMode,
+                                 @RequestParam("status")RecordStatus status){
+        recordService.makeRecordDone(id, status);
         return "redirect:/home" + (filterMode != null && !filterMode.isBlank() ? "?filter="+filterMode : "");
     }
 }

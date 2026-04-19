@@ -4,6 +4,7 @@ import com.maminozolotce.dao.RecordDao;
 import com.maminozolotce.entity.DTO.RecordContainerDto;
 import com.maminozolotce.entity.Record;
 import com.maminozolotce.entity.RecordStatus;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class RecordService {
     private final RecordDao recordDao;
 
@@ -58,7 +60,11 @@ public class RecordService {
         recordDao.deleteRecord(id);
     }
 
-    public void makeRecordDone(int id){
-        recordDao.makeRecordDone(id , RecordStatus.DONE);
+    public void makeRecordDone(int id, RecordStatus status){
+        if(status==RecordStatus.DONE){
+            recordDao.makeRecordDone(id, RecordStatus.ACTIVE);
+        }else{
+            recordDao.makeRecordDone(id, RecordStatus.DONE);
+        }
     }
 }
