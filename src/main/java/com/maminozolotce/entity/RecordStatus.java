@@ -1,4 +1,4 @@
-package com.maminozolotce.config.entity;
+package com.maminozolotce.entity;
 
 public enum RecordStatus {
     ACTIVE,
