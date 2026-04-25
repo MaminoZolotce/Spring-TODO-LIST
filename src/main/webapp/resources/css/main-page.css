@@ -1,0 +1,308 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg:       #0f0d1a;
+    --surface:  #17132a;
+    --surface2: #1e1836;
+    --border:   #2d2650;
+    --border2:  #3d3568;
+    --purple:   #7c6fe0;
+    --purple-h: #9b8ff0;
+    --purple-d: #5a50b0;
+    --text:     #e2dcff;
+    --muted:    #7b6ea8;
+    --faint:    #3d3560;
+}
+
+body {
+    background: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 420px;
+    animation: fadeInUp 0.4s ease both;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.header h1 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.3px;
+}
+
+.badge {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 11px;
+    color: var(--muted);
+    padding: 4px 10px;
+    white-space: nowrap;
+    margin-top: 3px;
+}
+
+.filters {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.25rem;
+    align-items: center;
+}
+
+.filter-btn {
+    padding: 6px 15px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: transparent;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--muted);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.15s;
+}
+
+.filter-btn:hover {
+    border-color: var(--border2);
+    color: var(--text);
+    transform: translateY(-1px);
+}
+
+.filter-btn:active {
+    transform: scale(0.95);
+}
+
+.filter-btn.active {
+    background: var(--purple);
+    border-color: var(--purple);
+    color: #fff;
+    font-weight: 500;
+}
+
+.apply-btn {
+    margin-left: auto;
+    padding: 6px 18px;
+    border-radius: 20px;
+    background: var(--purple);
+    border: none;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.apply-btn:hover {
+    background: var(--purple-h);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(124, 111, 224, 0.35);
+}
+
+.apply-btn:active {
+    background: var(--purple-d);
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 1rem;
+    min-height: 40px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 11px 14px;
+    transition: border-color 0.2s, transform 0.15s;
+    animation: slideIn 0.3s ease both;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+.task-item:hover {
+    border-color: var(--border2);
+    transform: translateX(3px);
+}
+
+/* Checkbox */
+.check-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    border: 1.5px solid var(--faint);
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.15s;
+}
+
+.check-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--purple);
+    border-radius: 6px;
+    transform: scale(0);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.check-btn.checked::before {
+    transform: scale(1);
+}
+
+.check-btn:hover:not(.checked) {
+    border-color: var(--purple);
+    transform: scale(1.1);
+}
+
+.check-btn:active {
+    transform: scale(0.9);
+}
+
+.check-icon {
+    width: 13px;
+    height: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.check-icon path {
+    stroke: #fff;
+    stroke-width: 2.2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 20;
+    stroke-dashoffset: 20;
+    transition: stroke-dashoffset 0.25s ease 0.05s;
+}
+
+.check-btn.checked .check-icon path {
+    stroke-dashoffset: 0;
+}
+
+.task-text {
+    flex: 1;
+    font-size: 14px;
+    color: var(--text);
+    transition: color 0.2s;
+}
+
+.task-text.done {
+    text-decoration: line-through;
+    color: var(--faint);
+}
+
+.del-btn {
+    background: transparent;
+    border: none;
+    color: var(--faint);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 3px;
+    transition: color 0.15s, transform 0.15s;
+}
+
+.del-btn:hover {
+    color: #c084fc;
+    transform: scale(1.2) rotate(15deg);
+}
+
+.del-btn:active {
+    transform: scale(0.9);
+}
+
+.add-row {
+    display: flex;
+    gap: 8px;
+}
+
+.add-input {
+    flex: 1;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 13px;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.add-input::placeholder {
+    color: var(--faint);
+}
+
+.add-input:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 3px rgba(124, 111, 224, 0.15);
+}
+
+.add-btn {
+    background: var(--purple);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 18px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.add-btn:hover {
+    background: var(--purple-h);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(124, 111, 224, 0.35);
+}
+
+.add-btn:active {
+    background: var(--purple-d);
+    transform: scale(0.96);
+    box-shadow: none;
+}
